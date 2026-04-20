@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eazee TSD Calc - Time Speed Distance Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="cockpit-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="img/file_00000000d648722fbd26f04a8287f96a.png" alt="Eazee TSD Calc Logo" class="brand-logo">
+                    <h1>Eazee TSD Calc</h1>
+                </div>
+                <div class="nav-tabs">
+                    <button class="tab-btn active" data-tab="calculator">
+                        <i class="fas fa-calculator"></i>
+                        Calculator
+                    </button>
+                    <button class="tab-btn" data-tab="quiz">
+                        <i class="fas fa-question-circle"></i>
+                        Quiz
+                    </button>
+                    <button class="tab-btn" data-tab="learning">
+                        <i class="fas fa-graduation-cap"></i>
+                        Learning
+                    </button>
+                    <button class="tab-btn" data-tab="converter">
+                        <i class="fas fa-exchange-alt"></i>
+                        Converter
+                    </button>
+                    <button class="tab-btn" data-tab="challenge">
+                        <i class="fas fa-trophy"></i>
+                        Challenge
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Calculator Tab -->
+            <div class="tab-content active" id="calculator">
+                <div class="card">
+                    <h2><i class="fas fa-calculator"></i> Eazee TSD Calculator</h2>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="calculate-type">What do you want to calculate?</label>
+                            <select id="calculate-type" class="aviation-select">
+                                <option value="distance">Distance (NM)</option>
+                                <option value="speed">Speed (Knots)</option>
+                                <option value="time">Time (Hours)</option>
+                            </select>
+                        </div>
+
+                        <div class="input-grid">
+                            <div class="form-group">
+                                <label for="speed-input">Speed (Knots)</label>
+                                <input type="number" id="speed-input" class="aviation-input" placeholder="120" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label for="time-input">Time (Hours)</label>
+                                <input type="number" id="time-input" class="aviation-input" placeholder="2.5" step="0.01">
+                            </div>
+                            <div class="form-group">
+                                <label for="distance-input">Distance (NM)</label>
+                                <input type="number" id="distance-input" class="aviation-input" placeholder="300" step="0.1">
+                            </div>
+                        </div>
+
+                        <button id="calculate-btn" class="aviation-btn primary">
+                            <i class="fas fa-calculator"></i> Calculate
+                        </button>
+                    </div>
+
+                    <div id="result-section" class="result-section hidden">
+                        <h3>Result</h3>
+                        <div id="result-display" class="result-display"></div>
+                        <div id="step-by-step" class="step-by-step"></div>
+                    </div>
+                </div>
+
+                <!-- History Section -->
+                <div class="card">
+                    <h2><i class="fas fa-history"></i> Calculation History</h2>
+                    <div id="history-list" class="history-list">
+                        <p class="no-history">No calculations yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Tab -->
+            <div class="tab-content" id="quiz">
+                <div class="card">
+                    <h2><i class="fas fa-question-circle"></i> Eazee Quiz Mode</h2>
+                    <div class="quiz-controls">
+                        <button id="start-quiz-btn" class="aviation-btn primary">
+                            <i class="fas fa-play"></i> Start Quiz
+                        </button>
+                        <div class="quiz-settings">
+                            <label>
+                                <input type="checkbox" id="timer-toggle"> Enable Timer
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="quiz-content" class="quiz-content hidden">
+                        <div class="quiz-header">
+                            <div class="quiz-score">
+                                <span>Score: <span id="score">0</span>/<span id="total-questions">0</span></span>
+                            </div>
+                            <div class="quiz-timer hidden">
+                                <i class="fas fa-clock"></i>
+                                <span id="timer-display">30</span>s
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <h3 id="question-text"></h3>
+                            <div class="options-grid">
+                                <button class="option-btn" data-option="A"></button>
+                                <button class="option-btn" data-option="B"></button>
+                                <button class="option-btn" data-option="C"></button>
+                                <button class="option-btn" data-option="D"></button>
+                            </div>
+                        </div>
+
+                        <div id="quiz-feedback" class="quiz-feedback hidden">
+                            <div class="feedback-content"></div>
+                            <button id="next-question-btn" class="aviation-btn secondary">
+                                Next Question <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Tab -->
+            <div class="tab-content" id="learning">
+                <div class="card">
+                    <h2><i class="fas fa-graduation-cap"></i> Eazee Learning Center</h2>
+                    <div class="learning-grid">
+                        <div class="learning-card">
+                            <h3><i class="fas fa-tachometer-alt"></i> Speed in Aviation</h3>
+                            <p><strong>What is speed in aviation?</strong></p>
+                            <p>In aviation, speed is measured in <strong>knots</strong>. One knot equals one nautical mile per hour.</p>
+                            <div class="formula-box">
+                                <strong>1 knot = 1 NM per hour</strong>
+                            </div>
+                            <p>Example: If an aircraft flies at 120 knots, it travels 120 nautical miles in one hour.</p>
+                        </div>
+
+                        <div class="learning-card">
+                            <h3><i class="fas fa-route"></i> Nautical Mile</h3>
+                            <p><strong>What is a nautical mile?</strong></p>
+                            <p>A nautical mile (NM) is based on the circumference of the Earth and is used for air and sea navigation.</p>
+                            <div class="formula-box">
+                                <strong>1 NM = 1.852 km</strong><br>
+                                <strong>1 NM = 1.151 miles</strong>
+                            </div>
+                            <p>It's approximately one minute of latitude on Earth.</p>
+                        </div>
+
+                        <div class="learning-card">
+                            <h3><i class="fas fa-exchange-alt"></i> Knots vs km/h</h3>
+                            <p><strong>Conversion between units:</strong></p>
+                            <div class="formula-box">
+                                <strong>1 knot = 1.852 km/h</strong><br>
+                                <strong>1 km/h = 0.540 knots</strong>
+                            </div>
+                            <p>Most countries use km/h for ground vehicles, but aviation universally uses knots.</p>
+                        </div>
+
+                        <div class="learning-card">
+                            <h3><i class="fas fa-calculator"></i> TSD Formulas</h3>
+                            <p><strong>The three fundamental formulas:</strong></p>
+                            <div class="formula-box">
+                                <strong>Distance = Speed × Time</strong><br>
+                                <strong>Speed = Distance ÷ Time</strong><br>
+                                <strong>Time = Distance ÷ Speed</strong>
+                            </div>
+                            <p>Remember: If you know any two values, you can always find the third!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Converter Tab -->
+            <div class="tab-content" id="converter">
+                <div class="card">
+                    <h2><i class="fas fa-exchange-alt"></i> Eazee Unit Converter</h2>
+                    <div class="converter-grid">
+                        <div class="converter-card">
+                            <h3>Minutes to Hours</h3>
+                            <div class="converter-form">
+                                <input type="number" id="minutes-input" class="aviation-input" placeholder="45" step="1">
+                                <span class="converter-arrow">→</span>
+                                <div class="converter-result">
+                                    <span id="hours-result">0.75</span> hours
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="converter-card">
+                            <h3>Hours to Minutes</h3>
+                            <div class="converter-form">
+                                <input type="number" id="hours-input" class="aviation-input" placeholder="2.5" step="0.01">
+                                <span class="converter-arrow">→</span>
+                                <div class="converter-result">
+                                    <span id="minutes-result">150</span> minutes
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="converter-card">
+                            <h3>Knots to km/h</h3>
+                            <div class="converter-form">
+                                <input type="number" id="knots-input" class="aviation-input" placeholder="120" step="0.1">
+                                <span class="converter-arrow">→</span>
+                                <div class="converter-result">
+                                    <span id="kmh-result">222.24</span> km/h
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="converter-card">
+                            <h3>km/h to Knots</h3>
+                            <div class="converter-form">
+                                <input type="number" id="kmh-input-conv" class="aviation-input" placeholder="200" step="0.1">
+                                <span class="converter-arrow">→</span>
+                                <div class="converter-result">
+                                    <span id="knots-result">107.99</span> knots
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Challenge Tab -->
+            <div class="tab-content" id="challenge">
+                <div class="card">
+                    <h2><i class="fas fa-trophy"></i> Eazee Pilot Challenge</h2>
+                    <div class="challenge-intro">
+                        <p>Test your skills with 5 increasingly difficult questions!</p>
+                        <p>Earn your rank: <strong>Cadet</strong> → <strong>First Officer</strong> → <strong>Captain</strong></p>
+                    </div>
+
+                    <div id="challenge-content">
+                        <button id="start-challenge-btn" class="aviation-btn primary large">
+                            <i class="fas fa-rocket"></i> Start Challenge
+                        </button>
+
+                        <div id="challenge-game" class="challenge-game hidden">
+                            <div class="challenge-progress">
+                                <div class="progress-bar">
+                                    <div id="progress-fill" class="progress-fill"></div>
+                                </div>
+                                <span>Question <span id="current-question">1</span> of 5</span>
+                            </div>
+
+                            <div class="question-card">
+                                <h3 id="challenge-question"></h3>
+                                <div class="options-grid">
+                                    <button class="option-btn challenge-option" data-option="A"></button>
+                                    <button class="option-btn challenge-option" data-option="B"></button>
+                                    <button class="option-btn challenge-option" data-option="C"></button>
+                                    <button class="option-btn challenge-option" data-option="D"></button>
+                                </div>
+                            </div>
+
+                            <div class="challenge-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>Score: <span id="challenge-score">0</span></span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-fire"></i>
+                                    <span>Streak: <span id="challenge-streak">0</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="challenge-result" class="challenge-result hidden">
+                            <div class="result-card">
+                                <h3 id="challenge-rank"></h3>
+                                <div class="final-stats">
+                                    <p>Final Score: <span id="final-score">0</span>/5</p>
+                                    <p>Accuracy: <span id="accuracy">0</span>%</p>
+                                </div>
+                                <div class="rank-badge" id="rank-badge"></div>
+                                <button id="retry-challenge-btn" class="aviation-btn primary">
+                                    <i class="fas fa-redo"></i> Try Again
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

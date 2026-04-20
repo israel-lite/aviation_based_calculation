@@ -1,0 +1,27 @@
+{
+  "name": "eazee-tsd-calc",
+  "version": "1.0.0",
+  "description": "Eazee TSD Calc - A modern, interactive web application for learning and practicing Time-Speed-Distance (TSD) problems used in aviation",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "build": "echo 'Static site - no build needed'",
+    "preview": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "aviation",
+    "tsd",
+    "calculator",
+    "time-speed-distance",
+    "knots",
+    "nautical-miles",
+    "flight-planning",
+    "pilot-training",
+    "eazee"
+  ],
+  "author": "Eazee",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}

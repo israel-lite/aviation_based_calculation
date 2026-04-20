@@ -1,0 +1,13 @@
+# Eazee TSD Calc Logo
+
+Please place your branded logo file here. Recommended formats:
+- PNG with transparent background
+- SVG for scalability
+- Size: 64x64 pixels for optimal display
+
+Example logo files:
+- logo.png
+- logo.svg
+- eazee-logo.png
+
+The logo will be displayed in the header section of the application.
